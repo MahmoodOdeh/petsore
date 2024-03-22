@@ -1,0 +1,36 @@
+name: Python Build and Test
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print a message
+        run: echo "Hello, this is the build and testing_layer workflow!"
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install requests selenium jira pytest-html
+
+      - name: Setup ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: latest
+
+      - name: Setup FirefoxDriver
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: latest
+
+      - name: Run Selenium Test
+        run: python -m unittest test.test_api.test_cart.test_add_product
+
+      - name: Run passwordLogic testing_layer
+        run: python -m unittest test.test_ui.Add_to_cart.test_run_grid_parallel_test_get_quantity
+
+

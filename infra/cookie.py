@@ -1,0 +1,32 @@
+cookies = [
+    {"name": "utm_source", "value": "google", "domain": ".shopify.com", "path": "/"},
+    {"name": "utm_medium", "value": "cpc", "domain": ".shopify.com", "path": "/"},
+    {"name": "secure_customer_sig", "value": "352a45437a081eb9a81916e1c4ff90ba", "domain": "petstore.com", "path": "/"},
+    {"name": "receive-cookie-deprecation", "value": "1", "domain": "petstore.com", "path": "/"},
+    {"name": "nf_device", "value": "742d9be7-bd03-4ed5-8aa0-3cb9040f8209", "domain": ".nofraud.com", "path": "/"},
+    {"name": "nf19050_customer_code", "value": "879-748-288", "domain": ".nofraud.com", "path": "/"},
+    {"name": "newsletter-newsletter-popup", "value": "opened", "domain": "petstore.com", "path": "/"},
+    {"name": "mto_pvs", "value": "3", "domain": ".shopify.com", "path": "/"},
+    {"name": "localization", "value": "US", "domain": "petstore.com", "path": "/"},
+    {"name": "keep_alive", "value": "cbb52b9a-a244-4928-b008-8c0bdf49c070", "domain": "petstore.com", "path": "/"},
+    {"name": "checkout_session_token__cn__Z2NwLXVzLWVhc3QxOjAxSFNFNkgxQU1KMVZETk1UODkwSlYxTjNa", "value": "...", "domain": "petstore.com", "path": "/"},
+    {"name": "checkout_session_lookup", "value": "...", "domain": "petstore.com", "path": "/"},
+    {"name": "cart_ts", "value": "1711122791", "domain": "petstore.com", "path": "/"},
+    {"name": "cart_sig", "value": "7916cdbaf6c1a8139575771a6a3949c3", "domain": "petstore.com", "path": "/"},
+    {"name": "cart", "value": "Z2NwLXVzLWVhc3QxOjAxSFNFNkgxQU1KMVZETk1UODkwSlYxTjNa", "domain": "petstore.com", "path": "/"},
+    {"name": "ar_debug", "value": "1", "domain": ".www.google-analytics.com", "path": "/"},
+    {"name": "_tracking_consent", "value": "...", "domain": ".petstore.com", "path": "/"},
+    {"name": "_shopify_y", "value": "279321e5-eb74-4e77-89c5-aa430549d112", "domain": ".petstore.com", "path": "/"},
+    {"name": "_shopify_y", "value": "3b58c876-1da0-43b4-bf17-d464c6637b9d", "domain": ".shopify.com", "path": "/"},
+    {"name": "_shopify_sa_t", "value": "2024-03-22T15%3A53%3A13.679Z", "domain": ".petstore.com", "path": "/"},
+    {"name": "_shopify_sa_p", "value": "", "domain": ".petstore.com", "path": "/"},
+    {"name": "_shopify_s", "value": "535ea4b2-9486-4938-a6fb-80f6fdf5a018", "domain": ".petstore.com", "path": "/"},
+    {"name": "_shopify_ga", "value": "GA1.2.292354645.1710947194", "domain": ".petstore.com", "path": "/"},
+    {"name": "_fbp", "value": "fb.1.1710834378617.361507797", "domain": ".shopify.com", "path": "/"},
+    {"name": "_cmp_a", "value": "...", "domain": ".petstore.com", "path": "/"},
+    {"name": "__mmapiwsid", "value": "018e5c66-6191-779e-af99-2bc6cef8d59a:5968edd480fb5b336b165f1770fe7f1e94195979", "domain": ".petstore.com", "path": "/"},
+    {"name": "FPID", "value": "FPID2.2.FciIguzXLqqhsDqgMtKYSWwJq4W9XZEmjJhqRvqMJ8I%3D.1710834378", "domain": ".shopify.com", "path": "/"},
+    {"name": "FPGCLAW", "value": "GCL.1710956828.CjwKCAjwkuqvBhAQEiwA65XxQHazJW7-zwQnKrElCOv1kVBNpG495cLt1ZLzPbh2wNNIY6f0db7AOhoC1R0QAvD_BwE", "domain": ".shopify.com", "path": "/"}
+]
+
+
