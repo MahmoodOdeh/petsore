@@ -28,7 +28,7 @@ jobs:
           firefox-version: latest
 
       - name: Setup EdgeDriver
-        uses: browser-actions/setup-edge-chromium@v2
+        uses: browser-actions/setup-chromium@v2
         with:
           edge-version: latest
 
