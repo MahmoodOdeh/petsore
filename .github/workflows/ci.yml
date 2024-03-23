@@ -33,7 +33,7 @@ jobs:
           edge-version: latest
 
       - name: Run API Test
-        run: python -m unittest C:/Users/odehm/Desktop/repos/petsore/test/test_api/test_cart.py
+        run: python -m unittest test_cart.py
 
 
       - name: Run UI Test
