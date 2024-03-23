@@ -28,9 +28,9 @@ jobs:
           firefox-version: latest
 
       - name: Setup EdgeDriver
-        uses: browser-actions/setup-edge@v1
+        uses: actions/setup-edge-chromium@v2
         with:
-          edge-version: '96.0.1054.62'
+          edge-version: latest
 
       - name: Run Selenium Test
         run: python -m unittest test.test_api.test_cart.test_add_product
