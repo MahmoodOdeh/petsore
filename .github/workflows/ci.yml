@@ -5,9 +5,7 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     env:
-        JSON_PATH: 'C:/Users/odehm/Desktop/repos/petsore/config.json'
-
-
+       JSON_PATH: 'C:/Users/odehm/Desktop/repos/petsore/config.json'
 
     steps:
       - name: Checkout code
@@ -21,6 +19,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests selenium jira pytest-html
+
+      - name: Print JSON_PATH
+        run: echo $JSON_PATH
 
       - name: Setup ChromeDriver
         uses: browser-actions/setup-chrome@v1
