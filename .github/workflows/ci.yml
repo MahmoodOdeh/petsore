@@ -5,7 +5,9 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     env:
-       JSON_PATH: '/home/runner/work/petsore/petsore/config.json'
+      INFRA_PATH: '/home/runner/work/petsore/petsore/infra'
+      LOGIC_PATH: '/home/runner/work/petsore/petsore/logic'
+      JSON_PATH: '/home/runner/work/petsore/petsore/config.json'
 
     steps:
       - name: Checkout code
