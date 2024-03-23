@@ -5,8 +5,8 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     env:
-       JSON_PATH: 'C:/Users/odehm/Desktop/repos/petsore/config.json'
-
+      JSON_PATH: ${{ github.workspace }}/config.json
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
