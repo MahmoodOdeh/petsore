@@ -5,8 +5,8 @@ from infra.config_handler import ConfigHandler
 class BrowserWrapper:
     def __init__(self):
         self.driver = None
-        self.config_file_path = 'C:/Users/odehm/Desktop/seleniumGrid/PetStore/config.json'
-        self.config_handler = ConfigHandler(self.config_file_path)
+        config_file_path = 'C:/Users/odehm/Desktop/seleniumGrid/PetStore/config.json'
+        self.config_handler = ConfigHandler(config_file_path)
         self.grid_enabled = self.config_handler.get_config_value('grid')
         self.serial_enabled = self.config_handler.get_config_value('serial')
         self.browser_types = self.config_handler.get_config_value('browser_types')
