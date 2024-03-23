@@ -32,8 +32,8 @@ jobs:
         with:
           edge-version: latest
 
-      - name: Run Selenium Test
-        run: python -m unittest C:/Users/odehm/Desktop/repos/petsore/test/test_api/test_cart.py
+      - name: Run API Test
+        run: python -m unittest test.test_api.test_cart
 
-      - name: Run passwordLogic testing_layer
-        run: python -m unittest C:/Users/odehm/Desktop/repos/petsore/test/test_ui/Add_to_cart.py
+      - name: Run UI Test
+        run: python -m unittest test.test_ui.Add_to_cart
