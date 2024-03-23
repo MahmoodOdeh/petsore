@@ -27,7 +27,7 @@ class PetStorePageTest(unittest.TestCase):
         self.menu = PetStoreMenuPage(driver)
         self.menu.press_dog_btn()
 
-    def test_get_quantity(self, browser_type):
+    def test_get_quantity(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         for cookie_data in cookies:
