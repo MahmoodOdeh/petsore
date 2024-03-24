@@ -8,7 +8,7 @@ pipeline {
         INFRA_PATH = 'C:/Users/odehm/Desktop/repos/petsore/infra'
         LOGIC_PATH = 'C:/Users/odehm/Desktop/repos/petsore/logic'
         TEST_PATH = 'C:/Users/odehm/Desktop/repos/petsore/test'
-        DOCKER_WORKDIR = '/usr/src/tests'
+        DOCKER_WORKDIR = '/usr/src/tests/petsore'
     }
 
     stages {
@@ -25,17 +25,17 @@ pipeline {
                         'Chrome Test': {
                             echo 'Running Chrome test...'
                             bat "docker rm -f chrome_test || true"
-                            bat "docker run --name chrome_test -e PYTHONPATH=/usr/src/tests/petsore -v ${INFRA_PATH}:/usr/src/tests/petsore/infra -v /usr/src/tests/petsore/logic ${IMAGE_NAME}:${TAG} python /usr/src/tests/petsore/test/End_to_End.py --browser chrome"
+                            bat "docker run --name chrome_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser chrome"
                         },
                         'Edge Test': {
                             echo 'Running Edge test...'
                             bat "docker rm -f edge_test || true"
-                            bat "docker run --name edge_test -e PYTHONPATH=/usr/src/tests/petsore -v ${INFRA_PATH}:/usr/src/tests/petsore/infra -v /usr/src/tests/petsore/logic ${IMAGE_NAME}:${TAG} python /usr/src/tests/petsore/test/End_to_End.py --browser edge"
+                            bat "docker run --name edge_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser edge"
                         },
                         'Firefox Test': {
                             echo 'Running Firefox test...'
                             bat "docker rm -f firefox_test || true"
-                            bat "docker run --name firefox_test -e PYTHONPATH=/usr/src/tests/petsore -v ${INFRA_PATH}:/usr/src/tests/petsore/infra -v /usr/src/tests/petsore/logic ${IMAGE_NAME}:${TAG} python /usr/src/tests/petsore/test/End_to_End.py --browser firefox"
+                            bat "docker run --name firefox_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser firefox"
                         }
                     )
                 }
