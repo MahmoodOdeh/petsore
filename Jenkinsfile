@@ -5,8 +5,6 @@ pipeline {
         // Define the Docker image name
         IMAGE_NAME = 'tests'
         TAG = 'latest'
-        INFRA_PATH = 'C:/Users/odehm/Desktop/repos/petsore/infra'
-        LOGIC_PATH = 'C:/Users/odehm/Desktop/repos/petsore/logic'
         DOCKER_WORKDIR = '/usr/src/tests/petsore'
     }
 
