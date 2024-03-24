@@ -1,7 +1,5 @@
 import time
-
 from selenium.webdriver.common.by import By
-
 from infra.base_page import BasePage
 
 
@@ -29,7 +27,7 @@ class PetStorePage(BasePage):
             self.wagon_button.click()
             time.sleep(2)
         except AttributeError:
-            print("Menu button not found or is not clickable.")
+            print("wagon button not found or is not clickable.")
 
     def press_user_btn(self):
         try:

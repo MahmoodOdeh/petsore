@@ -8,7 +8,7 @@ from infra.base_page import BasePage
 
 class PetStoreMenuPage(BasePage):
     DOG_CATEGORY = (By.XPATH,
-                     "//a[@href='/collections/dog' and @class='mobile-nav__link mobile-nav__link--top-level' and @id='Label-collections-dog1']")
+                    '//*[@id="Label-collections-dog1"] ')
 
     def __init__(self, driver):
         super().__init__(driver)

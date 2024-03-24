@@ -1,16 +1,9 @@
 import concurrent.futures
 import time
 import unittest
-from http import cookies as http_cookies
-
-from selenium import webdriver
-
 from infra.browser_wrapper import BrowserWrapper
 from logic.logic_ui.home_page import PetStorePage
 from logic.logic_ui.log_in_page import PetStoreLoginPage
-from logic.logic_ui.submit_page import PetStoreSubmitPage
-from logic.logic_ui.menu_page import PetStoreMenuPage
-from infra.cookie import cookies
 
 
 class PetStorePageTest(unittest.TestCase):
@@ -41,8 +34,6 @@ class PetStorePageTest(unittest.TestCase):
         self.petstore = PetStorePage(driver)
         self.petstore.press_user_btn()
         self.login = PetStoreLoginPage(driver)
-        self.login.user_name_fill("")
-        self.login.password_fill("")
         self.login.sign_in_button.click()
         expected_title = "Challenge – Petstore.com"
         assert expected_title == driver.title, f"Expected title '{expected_title}', but got '{driver.title}'"
