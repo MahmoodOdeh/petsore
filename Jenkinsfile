@@ -7,6 +7,7 @@ pipeline {
         TAG = 'latest'
         INFRA_PATH = 'C:/Users/odehm/Desktop/repos/petsore/infra'
         LOGIC_PATH = 'C:/Users/odehm/Desktop/repos/petsore/logic'
+         DOCKER_WORKDIR = '/usr/src/tests/petsore'
 
     }
 
