@@ -7,7 +7,7 @@ pipeline {
         TAG = 'latest'
         INFRA_PATH = 'C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/infra'
         LOGIC_PATH = 'C:/Users/odehm/Desktop/new/AirbnbSeleniumGridProject/logic'
-        DOCKER_WORKDIR = '/usr/src/tests/AirbnbSeleniumGridProject'
+
     }
 
     stages {
@@ -24,17 +24,17 @@ pipeline {
                         'Chrome Test': {
                             echo 'Running Chrome test...'
                             bat "docker rm -f chrome_test || true"
-                            bat "docker run --name chrome_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser chrome"
+                            bat "docker run --name chrome_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/End_to_End.py --browser chrome"
                         },
                         'Edge Test': {
                             echo 'Running Edge test...'
                             bat "docker rm -f edge_test || true"
-                            bat "docker run --name edge_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser edge"
+                            bat "docker run --name edge_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/End_to_End.py --browser edge"
                         },
                         'Firefox Test': {
                             echo 'Running Firefox test...'
                             bat "docker rm -f firefox_test || true"
-                            bat "docker run --name firefox_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/world_page_test.py --browser firefox"
+                            bat "docker run --name firefox_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic ${IMAGE_NAME}:${TAG} python test/End_to_End.py --browser firefox"
                         }
                     )
                 }
