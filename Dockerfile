@@ -36,7 +36,7 @@ WORKDIR /usr/src/tests
 COPY . .
 
 # Install pytest and other dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pytest
 
 # Run your tests
 CMD ["python", "test/End_to_End.py", "--browser", "firefox"]

@@ -10,7 +10,6 @@ from logic.logic_ui.cart_page import PetStoreCartPage
 from infra.cookie import cookies
 
 
-
 class PetStorePageTest(unittest.TestCase):
 
     def setUp(self):
