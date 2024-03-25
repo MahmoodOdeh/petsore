@@ -39,6 +39,8 @@ RUN wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/re
     && mv /tmp/geckodriver /usr/local/bin/geckodriver \
     && chmod +x /usr/local/bin/geckodriver
 
+# Install pytest
+RUN pip install pytest pytest-html
 WORKDIR /usr/src/tests
 
 COPY . .
