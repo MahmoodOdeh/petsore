@@ -1,5 +1,4 @@
 import concurrent.futures
-import os
 import unittest
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
@@ -47,7 +46,3 @@ class PetStorePageTest(unittest.TestCase):
                 executor.map(self.test_get_quantity, self.browser.browser_types)
         else:
             self.test_get_quantity(self.browser.default_browser.lower())
-
-
-if __name__ == "__main__":
-    unittest.main()
