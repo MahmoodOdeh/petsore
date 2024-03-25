@@ -36,6 +36,9 @@ WORKDIR /usr/src/tests
 # Copy the project files into the Docker image
 COPY . .
 
+# Copy the infra directory from the local machine into the image
+COPY /path/to/your/local/infra /usr/src/tests/petsore/infra
+
 # Install pytest and other dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
