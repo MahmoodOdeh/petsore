@@ -21,7 +21,7 @@ pipeline {
         stage('Install pytest') {
             steps {
                 script {
-                     bat 'call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest 
+                     bat 'call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest
                 }
             }
         }
