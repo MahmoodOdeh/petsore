@@ -42,6 +42,6 @@ jobs:
           edge-version: latest
 
       - name: Run Test
-        run: python -m unittest test.End_to_End.py
+        run: python -m unittest test.End_to_End
 
 
