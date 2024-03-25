@@ -1,6 +1,6 @@
 import concurrent.futures
 import unittest
-from infra.api_wrapper import APIWrapper
+from ..infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
 from infra.headers import headers
 from infra.payload import payload
