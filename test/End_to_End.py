@@ -9,7 +9,6 @@ from logic.logic_api.petstore_Api import PetStore
 from logic.logic_ui.home_page import PetStorePage
 from logic.logic_ui.cart_page import PetStoreCartPage
 from infra.cookie import cookies
-import pytest
 
 
 class PetStorePageTest(unittest.TestCase):
@@ -19,10 +18,6 @@ class PetStorePageTest(unittest.TestCase):
 
     def tearDown(self):
         self.browser.driver_quit()
-        if hasattr(self, 'response'):
-            report_path = os.path.join(os.path.dirname(__file__), 'report.html')
-            pytest.main(['--html=' + report_path])
-            del self.response  # Clean up response attribute after generating the report
 
     def test_get_quantity(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
