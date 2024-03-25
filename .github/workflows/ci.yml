@@ -10,15 +10,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Print a message
         run: echo "Hello, this is the build and testing_layer workflow!"
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: |
-          pip install requests selenium jira pytest-html
+          pip install -r requirements.txt
 
       - name: Print JSON_PATH
         run: echo $JSON_PATH
