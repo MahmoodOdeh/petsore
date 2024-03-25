@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     echo 'Installing pytest...'
-                    sh 'pip install pytest'
+                    bat 'C:\\Python39\\Scripts\\pip.exe install pytest'
                 }
             }
         }
