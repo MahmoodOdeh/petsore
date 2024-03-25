@@ -41,8 +41,7 @@ jobs:
         with:
           edge-version: latest
 
-      - name: Run API Test
-        run: python -m unittest test.test_api.test_cart
+      - name: Run Test
+        run: python -m unittest test.End_to_End.py
 
-      - name: Run UI Test
-        run: python -m unittest test.test_ui.Add_to_cart
+
