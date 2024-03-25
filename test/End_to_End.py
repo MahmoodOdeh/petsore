@@ -1,4 +1,5 @@
 import concurrent.futures
+import os
 import unittest
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
@@ -18,6 +19,10 @@ class PetStorePageTest(unittest.TestCase):
 
     def tearDown(self):
         self.browser.driver_quit()
+        if hasattr(self, 'response'):
+            report_path = os.path.join(os.path.dirname(__file__), 'report.html')
+            pytest.main(['--html=' + report_path])
+            del self.response  # Clean up response attribute after generating the report
 
     def test_get_quantity(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)

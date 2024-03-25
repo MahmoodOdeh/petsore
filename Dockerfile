@@ -4,8 +4,7 @@ FROM python:3.12
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
-    gnupg \
-    firefox
+    gnupg
 
 # Install Google Chrome
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -24,27 +23,20 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add 
 # Set ChromeDriver version
 ENV CHROME_DRIVER_VERSION="92.0.4515.107"
 
-# Set GeckoDriver version
-ENV GECKO_DRIVER_VERSION="0.30.0"
-
 # Download and install ChromeDriver
 RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip -d /tmp \
     && mv /tmp/chromedriver /usr/local/bin/chromedriver \
     && chmod +x /usr/local/bin/chromedriver
 
-# Download and install GeckoDriver
-RUN wget -q -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$GECKO_DRIVER_VERSION/geckodriver-v$GECKO_DRIVER_VERSION-linux64.tar.gz \
-    && tar -xzf /tmp/geckodriver.tar.gz -C /tmp \
-    && mv /tmp/geckodriver /usr/local/bin/geckodriver \
-    && chmod +x /usr/local/bin/geckodriver
-
-# Install pytest
-RUN pip install pytest pytest-html
+# Set up the working directory
 WORKDIR /usr/src/tests
 
+# Copy the project files into the Docker image
 COPY . .
 
+# Install pytest and other dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "--version"]
+# Run your tests
+CMD ["python", "test/End_to_End.py", "--browser", "firefox"]
