@@ -21,7 +21,7 @@ pipeline {
         stage('Install pytest') {
             steps {
                 script {
-                     bat 'call venv\\Scripts\\python.exe -m pytest C:/Users/odehm/Desktop/repos/petsore/test/End_to_End.py  --html=${TEST_REPORTS}\\report.html --self-contained-html'
+                     bat 'call venv/ripts/python.exe -m pytest C:/Users/odehm/Desktop/repos/petsore/test/End_to_End.py  --html=${TEST_REPORTS}/report.html --self-contained-html'
                 }
             }
         }
