@@ -35,6 +35,8 @@ WORKDIR /usr/src/tests
 # Copy the project files into the Docker image
 COPY . .
 
+# Install pytest and other dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir pytest
 
 # Run your tests
