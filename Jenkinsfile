@@ -57,7 +57,6 @@ pipeline {
         }
         success {
             echo 'Generating HTML report...'
-            bat "call C:/ProgramData/Jenkins/.jenkins/workspace/petsorefinalpoject/infra"
             bat "call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest"
             bat "call C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest --html=report.html"
             publishHTML(target: [reportDir: '${TEST_PATH}', reportFiles: 'report.html', reportName: 'Test Report'])
