@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat "${PYTHON_EXECUTABLE} test/test_end_2_end.py"
+                bat "${PYTHON_EXECUTABLE} test/End_to_End.py"
             }
         }
         stage('Run API Tests with Pytest') {
