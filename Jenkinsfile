@@ -18,6 +18,15 @@ pipeline {
             }
         }
 
+        stage('Install pytest') {
+            steps {
+                script {
+                    echo 'Installing pytest...'
+                    bat 'pip install pytest'
+                }
+            }
+        }
+
         stage('Run Tests in Parallel') {
             steps {
                 script {
@@ -49,9 +58,9 @@ pipeline {
             // bat "docker rmi ${IMAGE_NAME}:${TAG}"
         }
         success {
-        echo 'Generating HTML report...'
-        bat "docker run --rm -v ${TEST_PATH}:${DOCKER_WORKDIR}/test -w ${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} pytest --html=report.html"
-        publishHTML(target: [reportDir: '${DOCKER_WORKDIR}/test', reportFiles: 'report.html', reportName: 'Test Report'])
+            echo 'Generating HTML report...'
+            bat "docker run --rm -v ${TEST_PATH}:${DOCKER_WORKDIR}/test -w ${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} pytest --html=report.html"
+            publishHTML(target: [reportDir: '${DOCKER_WORKDIR}/test', reportFiles: 'report.html', reportName: 'Test Report'])
         }
     }
 }

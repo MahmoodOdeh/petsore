@@ -55,4 +55,4 @@ class PetStorePageTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    pytest.main(['--html=report.html'])
+    unittest.main()
