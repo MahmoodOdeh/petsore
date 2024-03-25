@@ -1,15 +1,16 @@
-
 pipeline {
     agent any
     environment {
         PYTHONPATH = "C:/Users/odehm/Desktop/repos/petsore"
         TEST_REPORTS='test-reports'
+        PIP_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pip.exe'
+        PYTEST_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest.exe'
     }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat 'pip install -r requirements.txt' // Install dependencies if needed
+                bat "${PIP_EXECUTABLE} install -r requirements.txt" // Install dependencies if needed
             }
         }
         stage('Test') {
@@ -25,7 +26,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest.exe test/End_to_End.py --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
