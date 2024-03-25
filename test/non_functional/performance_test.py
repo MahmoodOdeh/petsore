@@ -4,6 +4,8 @@ import unittest
 from infra.browser_wrapper import BrowserWrapper
 from logic.logic_ui.search_page import PetStoreSearchPage
 from logic.logic_ui.home_page import PetStorePage
+import sys
+sys.path.append('C:/Users/odehm/Desktop/repos/petsore')
 
 
 class PerformanceTest(unittest.TestCase):
