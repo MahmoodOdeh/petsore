@@ -8,7 +8,7 @@ from logic.logic_api.petstore_Api import PetStore
 from logic.logic_ui.home_page import PetStorePage
 from logic.logic_ui.cart_page import PetStoreCartPage
 from infra.cookie import cookies
-import pytest
+
 
 
 class PetStorePageTest(unittest.TestCase):
@@ -49,5 +49,4 @@ class PetStorePageTest(unittest.TestCase):
             self.test_get_quantity(self.browser.default_browser.lower())
 
 
-if __name__ == "__main__":
-    pytest.main(['--html=report.html'])
+
