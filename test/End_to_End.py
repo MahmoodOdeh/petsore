@@ -48,5 +48,6 @@ class PetStorePageTest(unittest.TestCase):
         else:
             self.test_get_quantity(self.browser.default_browser.lower())
 
+
 if __name__ == "__main__":
     pytest.main(['--html=report.html'])
