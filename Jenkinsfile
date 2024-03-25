@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        // Define the Docker image name
         IMAGE_NAME = 'tests'
         TAG = 'latest'
         INFRA_PATH = 'C:/Users/odehm/Desktop/repos/petsore/infra'
@@ -19,25 +20,29 @@ pipeline {
 
         stage('Install pytest') {
             steps {
-                bat 'call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest'
+                script {
+                     bat 'call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest'
+                }
             }
         }
-
         stage('Run Tests in Parallel') {
             steps {
                 script {
                     parallel(
                         'Chrome Test': {
                             echo 'Running Chrome test...'
-                            bat "python ${TEST_PATH}/End_to_End.py --browser chrome"
+                            bat "docker rm -f chrome_test || true"
+                            bat "docker run --name chrome_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser chrome"
                         },
                         'Edge Test': {
                             echo 'Running Edge test...'
-                            bat "python ${TEST_PATH}/End_to_End.py --browser edge"
+                            bat "docker rm -f edge_test || true"
+                            bat "docker run --name edge_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser edge"
                         },
                         'Firefox Test': {
                             echo 'Running Firefox test...'
-                            bat "python ${TEST_PATH}/End_to_End.py --browser firefox"
+                            bat "docker rm -f firefox_test || true"
+                            bat "docker run --name firefox_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/End_to_End.py --browser firefox"
                         }
                     )
                 }
@@ -48,12 +53,13 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            // Uncomment the line below if you want to remove the Docker image
             // bat "docker rmi ${IMAGE_NAME}:${TAG}"
         }
         success {
             echo 'Generating HTML report...'
-            bat "call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pytest --html=${TEST_PATH}/report.html ${TEST_PATH}"
+            bat "call C:/ProgramData/Jenkins/.jenkins/workspace/petsorefinalpoject/infra"
+            bat "call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest"
+            bat "call C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest --html=report.html"
             publishHTML(target: [reportDir: '${TEST_PATH}', reportFiles: 'report.html', reportName: 'Test Report'])
         }
     }
