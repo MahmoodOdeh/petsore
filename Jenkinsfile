@@ -48,5 +48,9 @@ pipeline {
             echo 'Cleaning up...'
             // bat "docker rmi ${IMAGE_NAME}:${TAG}"
         }
+        success {
+            echo 'Generating HTML report...'
+            publishHTML(target: [reportDir: '${TEST_PATH}', reportFiles: 'report.html', reportName: 'Test Report'])
+        }
     }
 }
