@@ -58,7 +58,6 @@ pipeline {
         }
         success {
             echo 'Generating HTML report...'
-            bat "docker cp ${INFRA_PATH} 021ac5d353cff228ac74f7ace287440c574603f67a1e49e9a7789b0d2e0e57da:/usr/src/tests/petsore/infra"
             bat "call C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe install pytest"
             bat "call C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest --html=report.html"
             publishHTML(target: [reportDir: '${TEST_PATH}', reportFiles: 'report.html', reportName: 'Test Report'])
