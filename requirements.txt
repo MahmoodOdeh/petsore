@@ -5,3 +5,4 @@ config~=0.5.1
 jira~=3.6.0
 python-dotenv~=1.0.1
 airbnb~=2.3.2
+pytest~=8.1.1
