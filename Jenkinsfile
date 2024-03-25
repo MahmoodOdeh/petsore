@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        PYTHON_EXECUTABLE='C:/Path/To/Your/Python/Executable/python.exe'
         PYTHONPATH = "C:/Users/odehm/Desktop/repos/petsore"
         TEST_REPORTS='test-reports'
         PIP_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pip.exe'
@@ -17,7 +18,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat 'python test/test_end_2_end.py'
+                bat "${PYTHON_EXECUTABLE} test/test_end_2_end.py"
             }
         }
         stage('Run API Tests with Pytest') {
