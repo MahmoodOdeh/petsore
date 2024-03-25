@@ -36,9 +36,6 @@ WORKDIR /usr/src/tests
 # Copy the project files into the Docker image
 COPY . .
 
-# Copy the 'infra' directory
-COPY infra /usr/src/tests/infra
-
 # Install pytest and other dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
