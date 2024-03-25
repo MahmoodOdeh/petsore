@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PYTHON_EXECUTABLE='C:/Path/To/Your/Python/Executable/python.exe'
+        PYTHON_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/python.exe'
         PYTHONPATH = "C:/Users/odehm/Desktop/repos/petsore"
         TEST_REPORTS='test-reports'
         PIP_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pip.exe'
