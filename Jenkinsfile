@@ -29,6 +29,7 @@ pipeline {
         stage('Run Tests in Parallel') {
             steps {
                 script {
+                    env.PYTHONPATH = "C:/ProgramData/Jenkins/.jenkins/workspace/petsorefinalpoject/infra"
                     parallel(
                         'Chrome Test': {
                             echo 'Running Chrome test...'
