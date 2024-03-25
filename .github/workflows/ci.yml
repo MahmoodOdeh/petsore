@@ -41,8 +41,7 @@ jobs:
         with:
           edge-version: latest
 
-      - name: Run Docker
-        run: docker run --rm -v $PWD:/usr/src/tests -w /usr/src/tests tests
+      - name: Run Tests
+        run: docker run --rm -v $PWD:/usr/src/tests -w /usr/src/tests tests:latest python -m unittest test.End_to_End
 
-      - name: Run Test
-        run: python -m unittest test.End_to_End
+  
