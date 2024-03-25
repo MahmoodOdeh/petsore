@@ -4,8 +4,7 @@ FROM python:3.12
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
-    gnupg \
-    curl
+    gnupg
 
 # Install Google Chrome
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -15,7 +14,7 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add
     && rm -rf /var/lib/apt/lists/*
 
 # Install Microsoft Edge (Chromium)
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add - \
     && echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list \
     && apt-get update && apt-get install -y \
     microsoft-edge-dev \
@@ -35,12 +34,11 @@ WORKDIR /usr/src/tests
 
 # Copy the project files into the Docker image
 COPY . .
+RUN pip install --no-cache-dir pytest
+docker build -t tests:tag .
 
-# Copy the infra directory from the local machine into the image
-COPY /path/to/your/local/infra /usr/src/tests/petsore/infra
-
-# Install pytest and other dependencies
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Run your tests
 CMD ["python", "test/End_to_End.py", "--browser", "firefox"]
+
+
