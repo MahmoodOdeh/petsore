@@ -50,7 +50,7 @@ pipeline {
         }
         success {
             echo 'Generating HTML report...'
-            publishHTML(target: [reportDir: '${TEST_PATH}', reportFiles: 'report.html', reportName: 'Test Report'])
+            bat "docker run --rm -v ${TEST_PATH}:${DOCKER_WORKDIR}/test -w ${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} pytest --html=report.html"
         }
     }
 }
