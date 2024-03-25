@@ -21,9 +21,7 @@ pipeline {
         stage('Install pytest') {
             steps {
                 script {
-                    echo 'Installing pytest...'
-                    bat 'C:\\Users\\odehm\\Desktop\\seleniumGrid\\final\\env\\Scripts\\pip.exe install pytest'
-                     bat   bat 'call venv\\Scripts\\python.exe -m pytest /test/End_to_End.py  --html=${TEST_REPORTS}\\report.html --self-contained-html'
+                    bat   bat 'call venv\\Scripts\\python.exe -m pytest /test/End_to_End.py  --html=${TEST_REPORTS}\\report.html --self-contained-html'
                 }
             }
         }
