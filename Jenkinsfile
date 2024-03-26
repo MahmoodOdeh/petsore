@@ -47,6 +47,8 @@ pipeline {
             script {
                 // Create a Jira issue when tests fail
                 jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Tests Failed', description: 'Tests Failed: ${env.BUILD_URL}')
+                // Log the Jira URL
+                echo "Jira URL: ${env.BUILD_URL}"
             }
         }
     }
