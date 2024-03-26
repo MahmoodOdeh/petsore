@@ -18,7 +18,7 @@ class PetStorePageTest(unittest.TestCase):
     def tearDown(self):
         self.browser.driver_quit()
 
-    def test_add_product_quantity(self, browser_type):
+    def test_add_product_quantity(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.my_api = APIWrapper()
