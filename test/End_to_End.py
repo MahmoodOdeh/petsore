@@ -3,7 +3,6 @@ import unittest
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
 from infra.headers import headers
-from infra.jira_wrapper import JiraClient
 from infra.payload import payload
 from logic.logic_api.petstore_Api import PetStore
 from logic.logic_ui.home_page import PetStorePage
