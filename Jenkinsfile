@@ -30,6 +30,7 @@ pipeline {
                         bat "${PYTEST_EXECUTABLE} test/End_to_End.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
+                        currentBuild.result = 'FAILURE'
                     }
                 }
             }
@@ -44,8 +45,8 @@ pipeline {
     post {
         failure {
             script {
-                // Create a Jira issue when the build fails
-                jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Build Failed', description: 'Build Failed: ${env.BUILD_URL}')
+                // Create a Jira issue when tests fail
+                jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Tests Failed', description: 'Tests Failed: ${env.BUILD_URL}')
             }
         }
     }
