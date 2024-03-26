@@ -51,7 +51,6 @@ class PetStorePageTest(unittest.TestCase):
         expected_title = "Petstore.com"
         assert expected_title == driver.title, f"Expected title '{expected_title}', but got '{driver.title}'"
 
-
     def test_run_grid_parallel_test_cart_plus(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:

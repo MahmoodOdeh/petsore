@@ -1,6 +1,3 @@
-import sys
-
-sys.path.append('C:/Users/odehm/Desktop/repos/petsore')
 import concurrent.futures
 import time
 import unittest

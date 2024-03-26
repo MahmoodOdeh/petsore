@@ -42,3 +42,5 @@ docker build -t tests:tag .
 CMD ["python", "test/End_to_End.py", "--browser", "firefox"]
 
 
+#import sys #add to test
+#sys.path.append('C:/Users/odehm/Desktop/repos/petsore')
