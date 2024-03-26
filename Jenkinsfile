@@ -43,7 +43,11 @@ pipeline {
         }
     }
     post {
+        always {
+            echo "Post section is being executed"
+        }
         failure {
+            echo "Build failed"
             script {
                 // Create a Jira issue when tests fail
                 jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Tests Failed', description: 'Tests Failed: ${env.BUILD_URL}')
