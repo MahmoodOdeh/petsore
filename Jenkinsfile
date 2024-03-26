@@ -41,4 +41,12 @@ pipeline {
             }
         }
     }
+    post {
+        failure {
+            script {
+                // Create a Jira issue when the build fails
+                jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Build Failed', description: 'Build Failed: ${env.BUILD_URL}')
+            }
+        }
+    }
 }

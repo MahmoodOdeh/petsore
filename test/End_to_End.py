@@ -3,6 +3,7 @@ import unittest
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
 from infra.headers import headers
+from infra.jira_wrapper import JiraClient
 from infra.payload import payload
 from logic.logic_api.petstore_Api import PetStore
 from logic.logic_ui.home_page import PetStorePage
@@ -18,7 +19,7 @@ class PetStorePageTest(unittest.TestCase):
     def tearDown(self):
         self.browser.driver_quit()
 
-    def test_add_product_quantity(self, browser_type=None):
+    def test_add_product_quantity(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.my_api = APIWrapper()
