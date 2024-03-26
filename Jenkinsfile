@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat "${PYTHON_EXECUTABLE} test/test_ui/login_test.py"
+                bat "${PYTHON_EXECUTABLE} test/End_to_End.py"
             }
         }
         stage('Run Tests') {
@@ -27,7 +27,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/test_ui/login_test.py --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
