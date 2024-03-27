@@ -6,6 +6,7 @@ pipeline {
         TEST_REPORTS='test-reports'
         PIP_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pip.exe'
         PYTEST_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest.exe'
+        PASSWORD = credentials('JIRA_TOKEN')
     }
     stages {
         stage('Build') {
@@ -18,7 +19,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat "${PYTHON_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity"
+                bat "${PYTHON_EXECUTABLE} test/test_ui/login_test.py"
             }
         }
         stage('Run Tests') {
@@ -27,7 +28,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/test_ui/login_test.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'

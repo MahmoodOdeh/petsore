@@ -5,5 +5,7 @@
   "serial": false,
   "browser":"chrome",
   "platform": "windows",
-  "browser_types": ["chrome" ,"edge","firefox"]
+  "browser_types": ["chrome" ,"edge","firefox"],
+  "jira_url":"https://odehmahmood3.atlassian.net/",
+  "jira_user": "odeh.mahmood3@gmail.com"
 }

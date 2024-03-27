@@ -3,6 +3,7 @@ import time
 import concurrent.futures
 
 from infra.browser_wrapper import BrowserWrapper
+from infra.jira_wrapper import JiraClient
 from logic.logic_ui.home_page import PetStorePage
 from logic.logic_ui.log_in_page import PetStoreLoginPage
 from logic.logic_ui.submit_page import PetStoreSubmitPage
@@ -12,8 +13,16 @@ class PetStorePageTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = BrowserWrapper()
+        self.jira_client = JiraClient()
 
     def tearDown(self):
+        if self._outcome.errors:
+            self.jira_client.create_issue(
+                summary='Test Failure',
+                description='One or more tests failed in TestBookLogic.',
+                project_key='TT',
+                issue_type='Bug'
+            )
         self.browser.driver_quit()
 
     def test_login(self, browser_type=None):
