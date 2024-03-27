@@ -1,6 +1,6 @@
-import concurrent.futures
-import time
 import unittest
+import time
+import concurrent.futures
 
 from infra.browser_wrapper import BrowserWrapper
 from logic.logic_ui.home_page import PetStorePage
@@ -55,7 +55,7 @@ class PetStorePageTest(unittest.TestCase):
         self.login.sign_in_button.click()
         time.sleep(5)
         self.submit = PetStoreSubmitPage(driver)
-       # self.submit.not_robot_btn()
+        # self.submit.not_robot_btn()
         self.submit.submit_btn()
         time.sleep(3)
         print(driver.title)
@@ -67,7 +67,6 @@ class PetStorePageTest(unittest.TestCase):
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
                 executor.map(self.test_login, self.browser.browser_types)
         else:
-
             self.test_login(self.browser.default_browser.lower())
 
     def test_run_grid_parallel_test_invalid_login(self):
@@ -75,7 +74,6 @@ class PetStorePageTest(unittest.TestCase):
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
                 executor.map(self.test_invalid_login, self.browser.browser_types)
         else:
-
             self.test_invalid_login(self.browser.default_browser.lower())
 
     def test_run_grid_parallel_test_wrong_data_login(self):
@@ -83,5 +81,8 @@ class PetStorePageTest(unittest.TestCase):
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
                 executor.map(self.test_wrong_data_login, self.browser.browser_types)
         else:
-
             self.test_wrong_data_login(self.browser.default_browser.lower())
+
+
+if __name__ == '__main__':
+    unittest.main()
