@@ -18,7 +18,7 @@ class PetStorePageTest(unittest.TestCase):
     def tearDown(self):
         self.browser.driver_quit()
 
-    def test_add_product_quantity(self, browser_type=None):
+    def tst_add_product_quantity(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.my_api = APIWrapper()
@@ -43,6 +43,6 @@ class PetStorePageTest(unittest.TestCase):
     def test_run_grid_parallel_test_get_quantity(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                executor.map(self.test_add_product_quantity, self.browser.browser_types)
+                executor.map(self.tst_add_product_quantity, self.browser.browser_types)
         else:
-            self.test_add_product_quantity(self.browser.default_browser.lower())
+            self.tst_add_product_quantity(self.browser.default_browser.lower())
