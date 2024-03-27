@@ -24,7 +24,7 @@ class PetStorePageTest(unittest.TestCase):
                 project_key='PT',
                 issue_type='Bug'
             )
-      #  self.browser.driver_quit()
+        self.browser.driver_quit()
 
     def record_failure(self, test_name):
         self.failed_tests.append(test_name)
@@ -68,7 +68,6 @@ class PetStorePageTest(unittest.TestCase):
         self.login.sign_in_button.click()
         time.sleep(5)
         self.submit = PetStoreSubmitPage(driver)
-        # self.submit.not_robot_btn()
         self.submit.submit_btn()
         time.sleep(3)
         print(driver.title)
