@@ -13,7 +13,7 @@ class JiraClient:
         self.jira_url = self.config_handler.get_config_value('jira_url')
         self.TOKEN = os.getenv("JIRA_TOKEN")
         self.jira_user = self.config_handler.get_config_value('jira_user')
-        self.auth_jira = JIRA(basic_auth=('self.jira_user', self.TOKEN), options={'server': self.jira_url})
+        self.auth_jira = JIRA(basic_auth=(self.jira_user, self.TOKEN), options={'server': self.jira_url})
 
     def create_issue(self, summary, description, project_key, issue_type='Bug'):
         print("summary", summary)

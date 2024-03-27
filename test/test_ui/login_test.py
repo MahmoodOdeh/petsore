@@ -16,7 +16,7 @@ class PetStorePageTest(unittest.TestCase):
         self.jira_client = JiraClient()
 
     def tearDown(self):
-        if self._outcome.errors:
+        if self.record_failure:
             self.jira_client.create_issue(
                 summary='Test Failure',
                 description='One or more tests failed in TestBookLogic.',
@@ -24,6 +24,9 @@ class PetStorePageTest(unittest.TestCase):
                 issue_type='Bug'
             )
         self.browser.driver_quit()
+
+    def record_failure(self):
+        self.has_failures = True
 
     def test_login(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
@@ -86,11 +89,14 @@ class PetStorePageTest(unittest.TestCase):
             self.test_invalid_login(self.browser.default_browser.lower())
 
     def test_run_grid_parallel_test_wrong_data_login(self):
-        if self.browser.grid_enabled and not self.browser.serial_enabled:
-            with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                executor.map(self.test_wrong_data_login, self.browser.browser_types)
-        else:
-            self.test_wrong_data_login(self.browser.default_browser.lower())
+        try:
+            if self.browser.grid_enabled and not self.browser.serial_enabled:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
+                    executor.map(self.test_wrong_data_login, self.browser.browser_types)
+            else:
+                self.test_wrong_data_login(self.browser.default_browser.lower())
+        except AssertionError:
+            self.record_failure()
 
 
 if __name__ == '__main__':
