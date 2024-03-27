@@ -27,7 +27,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/test_ui/login_test.py --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
@@ -39,20 +39,6 @@ pipeline {
             steps {
                 echo 'Deploying..'
                 // Add deployment steps here if needed
-            }
-        }
-    }
-    post {
-        always {
-            echo "Post section is being executed"
-        }
-        failure {
-            echo "Build failed"
-            script {
-                // Create a Jira issue when tests fail
-                jiraNewIssue(projectKey: 'PET', issueType: 'Bug', summary: 'Tests Failed', description: 'Tests Failed: ${env.BUILD_URL}')
-                // Log the Jira URL
-                echo "Jira URL: ${env.BUILD_URL}"
             }
         }
     }
