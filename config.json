@@ -1,8 +1,8 @@
 {
   "url": "https://petstore.com/",
   "hub_url": "http://localhost:4444/wd/hub",
-  "grid": false,
-  "serial": true,
+  "grid": true,
+  "serial": false,
   "browser":"chrome",
   "platform": "windows",
   "browser_types": ["chrome" ,"edge","firefox"]
