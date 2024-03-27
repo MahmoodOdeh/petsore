@@ -11,9 +11,12 @@ from logic.logic_ui.submit_page import PetStoreSubmitPage
 
 class PetStorePageTest(unittest.TestCase):
 
+
+
     def setUp(self):
         self.browser = BrowserWrapper()
         self.jira_client = JiraClient()
+        self.failed_tests = []
 
     def tearDown(self):
         if self.record_failure:
@@ -25,8 +28,8 @@ class PetStorePageTest(unittest.TestCase):
             )
         self.browser.driver_quit()
 
-    def record_failure(self):
-        self.has_failures = True
+    def record_failure(self, test_name):
+        self.failed_tests.append(test_name)
 
     def test_login(self, browser_type=None):
         driver = self.browser.get_driver(browser_type)
@@ -96,7 +99,8 @@ class PetStorePageTest(unittest.TestCase):
             else:
                 self.test_wrong_data_login(self.browser.default_browser.lower())
         except AssertionError:
-            self.record_failure()
+            self.record_failure('test_wrong_data_login')
+            raise
 
 
 if __name__ == '__main__':
