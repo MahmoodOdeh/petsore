@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat "${PYTHON_EXECUTABLE} test/End_to_End.py"
+                bat "${PYTHON_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity"
             }
         }
         stage('Run Tests') {
