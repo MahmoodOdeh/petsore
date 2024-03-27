@@ -11,8 +11,6 @@ from logic.logic_ui.submit_page import PetStoreSubmitPage
 
 class PetStorePageTest(unittest.TestCase):
 
-
-
     def setUp(self):
         self.browser = BrowserWrapper()
         self.jira_client = JiraClient()
@@ -92,15 +90,12 @@ class PetStorePageTest(unittest.TestCase):
             self.test_invalid_login(self.browser.default_browser.lower())
 
     def test_run_grid_parallel_test_wrong_data_login(self):
-        try:
-            if self.browser.grid_enabled and not self.browser.serial_enabled:
-                with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                    executor.map(self.test_wrong_data_login, self.browser.browser_types)
-            else:
-                self.test_wrong_data_login(self.browser.default_browser.lower())
-        except AssertionError:
-            self.record_failure('test_wrong_data_login')
-            raise
+        if self.browser.grid_enabled and not self.browser.serial_enabled:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
+                executor.map(self.test_wrong_data_login, self.browser.browser_types)
+        else:
+            self.test_wrong_data_login(self.browser.default_browser.lower())
+        self.record_failure('test_wrong_data_login')
 
 
 if __name__ == '__main__':

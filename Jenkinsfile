@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Test PII') {
+        stage('Test API') {
             steps {
                 echo 'Testing..'
                 // Run your tests here
