@@ -20,7 +20,7 @@ class PetStorePageTest(unittest.TestCase):
             self.jira_client.create_issue(
                 summary='Test Failure',
                 description='One or more tests failed in TestBookLogic.',
-                project_key='TT',
+                project_key='PT',
                 issue_type='Bug'
             )
         self.browser.driver_quit()
