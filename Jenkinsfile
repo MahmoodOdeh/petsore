@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat "${PYTHON_EXECUTABLE} test/test_ui/login_test.py"
+                bat "${PYTHON_EXECUTABLE} test/End_to_End.py"
             }
         }
         stage('Run Tests') {
