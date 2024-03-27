@@ -24,12 +24,12 @@ class PetStorePageTest(unittest.TestCase):
                 project_key='PT',
                 issue_type='Bug'
             )
-        self.browser.driver_quit()
+      #  self.browser.driver_quit()
 
     def record_failure(self, test_name):
         self.failed_tests.append(test_name)
 
-    def test_login(self, browser_type=None):
+    def test_login(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.petstore = PetStorePage(driver)
@@ -43,7 +43,7 @@ class PetStorePageTest(unittest.TestCase):
         expected_title = "Account – Petstore.com"
         assert expected_title == driver.title, f"Expected title '{expected_title}', but got '{driver.title}'"
 
-    def test_invalid_login(self, browser_type=None):
+    def test_invalid_login(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.petstore = PetStorePage(driver)
@@ -57,7 +57,7 @@ class PetStorePageTest(unittest.TestCase):
         expected_title = "Incorrect email or password. – Petstore.com"
         assert expected_title == driver.title, f"Expected title '{expected_title}', but got '{driver.title}'"
 
-    def test_wrong_data_login(self, browser_type=None):
+    def test_wrong_data_login(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.petstore = PetStorePage(driver)
@@ -72,7 +72,7 @@ class PetStorePageTest(unittest.TestCase):
         self.submit.submit_btn()
         time.sleep(3)
         print(driver.title)
-        expected_title = "Incorrect eghdghmail or password. – Petstore.com"
+        expected_title = "Incorrect email or password. – Petstore.com"
         assert expected_title == driver.title, f"Expected title '{expected_title}', but got '{driver.title}'"
 
     def test_run_grid_parallel_test_login(self):
@@ -90,7 +90,6 @@ class PetStorePageTest(unittest.TestCase):
             self.test_invalid_login(self.browser.default_browser.lower())
 
     def test_run_grid_parallel_test_wrong_data_login(self):
-        self.record_failure('test_wrong_data_login')
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
                 executor.map(self.test_wrong_data_login, self.browser.browser_types)
