@@ -12,13 +12,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-           //     bat "${PIP_EXECUTABLE} install -r requirements.txt" // Install dependencies if needed
+                bat "${PIP_EXECUTABLE} install -r requirements.txt" // Install dependencies
             }
         }
         stage('Test UI') {
             steps {
                 echo 'Testing..'
-                // Run your tests here
                 bat "${PYTHON_EXECUTABLE} test/test_ui/login_test.py -k test_run_grid_parallel_test_wrong_data_login"
             }
         }
@@ -27,8 +26,7 @@ pipeline {
                 echo 'Running Tests with Pytest..'
                 script {
                     try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/test_ui/login_test.py -k test_run_grid_parallel_test_wrong_data_login --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/test_ui/login_test.py -k test_run_grid_parallel_test_wrong_data_login --html=${TEST_REPORTS}/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
@@ -39,7 +37,6 @@ pipeline {
         stage('Test API') {
             steps {
                 echo 'Testing..'
-                // Run your tests here
                 bat "${PYTHON_EXECUTABLE} test/test_api/test_cart.py -k test_run_grid_parallel_test_add_product"
             }
         }
@@ -48,8 +45,7 @@ pipeline {
                 echo 'Running Tests with Pytest..'
                 script {
                     try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/test_api/test_cart.py -k test_run_grid_parallel_test_add_product --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/test_api/test_cart.py -k test_run_grid_parallel_test_add_product --html=${TEST_REPORTS}/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
@@ -60,7 +56,6 @@ pipeline {
         stage('Test NON_FUNCTIONAL') {
             steps {
                 echo 'Testing..'
-                // Run your tests here
                 bat "${PYTHON_EXECUTABLE} test/non_functional/performance_test.py -k test_run_grid_parallel_test_assert_response_time_search"
             }
         }
@@ -69,8 +64,7 @@ pipeline {
                 echo 'Running Tests with Pytest..'
                 script {
                     try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/non_functional/performance_test.py -k test_run_grid_parallel_test_assert_response_time_search --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/non_functional/performance_test.py -k test_run_grid_parallel_test_assert_response_time_search --html=${TEST_REPORTS}/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
@@ -78,10 +72,9 @@ pipeline {
                 }
             }
         }
-          stage('Test END_TO_END') {
+        stage('Test END_TO_END') {
             steps {
                 echo 'Testing..'
-                // Run your tests here
                 bat "${PYTHON_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity"
             }
         }
@@ -90,8 +83,7 @@ pipeline {
                 echo 'Running Tests with Pytest..'
                 script {
                     try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity --html=test-reports/report.html"
+                        bat "${PYTEST_EXECUTABLE} test/End_to_End.py -k test_run_grid_parallel_test_get_quantity --html=${TEST_REPORTS}/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                         currentBuild.result = 'FAILURE'
