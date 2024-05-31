@@ -1,11 +1,11 @@
 pipeline {
     agent any
     environment {
-        PYTHON_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/python.exe'
+        PYTHON_EXECUTABLE='C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/python.exe'
         PYTHONPATH = "C:/Users/odehm/Desktop/repos/petsore"
         TEST_REPORTS='test-reports'
-        PIP_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pip.exe'
-        PYTEST_EXECUTABLE='C:/Users/odehm/Desktop/seleniumGrid/PetStore/.venv/Scripts/pytest.exe'
+        PIP_EXECUTABLE='C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pip.exe'
+        PYTEST_EXECUTABLE='C:/Users/odehm/Desktop/repos/petsore/.venv/Scripts/pytest.exe'
         PASSWORD = credentials('JIRA_TOKEN')
     }
     stages {
