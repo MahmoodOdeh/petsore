@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat "${PIP_EXECUTABLE} install -r requirements.txt" // Install dependencies
+             //   bat "${PIP_EXECUTABLE} install -r requirements.txt" // Install dependencies
             }
         }
         stage('Test UI') {
