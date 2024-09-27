@@ -14,7 +14,7 @@ class PetStorePageTest(unittest.TestCase):
     def tearDown(self):
         self.browser.driver_quit()
 
-    def test_usability(self, browser_type=None):
+    def test_usability(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         driver.get(self.browser.get_driver_url())
         self.petstore = PetStorePage(driver)
